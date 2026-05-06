@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV SEMASA HIDUP - Solusi Teknologi Terpadu Indonesia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a4d7a;
+            --secondary: #e8931f;
+            --accent: #00b4d8;
+            --dark: #0f2a3d;
+            --light: #f8f9fa;
+            --text: #1a1a1a;
+            --border: #e0e0e0;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: white;
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 42, 61, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(232, 147, 31, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 147, 31, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float-reverse 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        @keyframes float-reverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--secondary);
+            text-shadow: 0 10px 30px rgba(232, 147, 31, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(232, 147, 31, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 147, 31, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .hero-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .hero-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section.dark {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+        }
+
+        .section.light {
+            background: var(--light);
+        }
+
+        .section.white {
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section.dark .section-header h2 {
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section.dark .section-header p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Company Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(26, 77, 122, 0.05), rgba(0, 180, 216, 0.05));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--secondary);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--secondary);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Legality Badges */
+        .legality-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .legality-badge {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--success);
+            transition: all 0.3s ease;
+        }
+
+        .legality-badge:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .legality-badge .badge-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .legality-badge h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .legality-badge .badge-content {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .legality-badge .badge-content strong {
+            color: var(--primary);
+            display: block;
+            margin-top: 0.5rem;
+        }
+
+        .legality-badge .status-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), #20c997);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Profile Section */
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+        }
+
+        .profile-detail h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .detail-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            color: #666;
+            margin-top: 0.3rem;
+            font-size: 1rem;
+        }
+
+        /* Document Display */
+        .document-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .document-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .document-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .document-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-header h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .document-body {
+            padding: 2rem;
+        }
+
+        .document-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .document-body li {
+            padding: 0.5rem 0;
+            color: #666;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .document-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .document-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .document-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(232, 147, 31, 0.3);
+        }
+
+        /* Business Fields */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .business-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .business-item-code {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .business-item-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-item-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-item-icon {
+            min-width: 50px;
+            width: 50px;
+            height: 50px;
+            background: rgba(232, 147, 31, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: var(--light);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(232, 147, 31, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(232, 147, 31, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(232, 147, 31, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .hero .container,
+            .contact-content,
+            .profile-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .services-grid,
+            .stats-grid,
+            .info-grid,
+            .legality-section,
+            .document-grid,
+            .business-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-nav button {
+            background: none;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 600;
+        }
+
+        .tab-nav button.active {
+            color: var(--primary);
+        }
+
+        .tab-nav button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(135deg, var(--secondary), #ff6b35);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            margin-left: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+
+        .timeline-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .verified-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), #20c997);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo-section" onclick="showPage('home')">
+                <div class="logo-img">
+                    <img src="logo.png" alt="CV SEMASA HIDUP">
+                </div>
+                <div>
+                    <div class="logo-text">CV SEMASA <span>HIDUP</span></div>
+                </div>
+            </div>
+            <ul>
+                <li><a onclick="showPage('home')">Beranda</a></li>
+                <li><a onclick="showPage('profile')">Profile Lengkap</a></li>
+                <li><a onclick="showPage('legality')">Legalitas</a></li>
+                <li><a onclick="showPage('contact')">Kontak</a></li>
+                <li><button class="cta-btn" onclick="showPage('contact')">Hubungi Kami</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: HOME -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Solusi Teknologi Terpadu untuk <span class="highlight">Bisnis Modern</span></h1>
+                    <p>Kami menyediakan layanan IT komprehensif dengan standar internasional untuk mendukung transformasi digital perusahaan Anda.</p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary" onclick="showPage('profile')">Pelajari Lebih Lanjut</button>
+                        <button class="btn-secondary" onclick="showPage('contact')">Hubungi Kami</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <h3>🔐 Keamanan Tingkat Enterprise</h3>
+                        <p>Sistem enkripsi end-to-end dengan sertifikasi internasional</p>
+                    </div>
+                    <div class="hero-card">
+                        <h3>⚡ Performa Optimal</h3>
+                        <p>Uptime 99.9% dengan redundansi penuh dan disaster recovery</p>
+                    </div>
+                    <div class="hero-card">
+                        <h3>🎯 Support 24/7</h3>
+                        <p>Tim ahli siap membantu kapan saja untuk kesuksesan Anda</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Info -->
+        <section class="section light">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tentang CV SEMASA HIDUP</h2>
+                    <p>Perusahaan terpercaya dengan pengalaman bertahun-tahun dalam memberikan solusi teknologi terbaik</p>
+                </div>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="icon">📋</div>
+                        <h3>Legalitas Terjamin</h3>
+                        <p>
+                            ✓ NIB: 2612250009794<br>
+                            ✓ NPWP: 1000000007532831<br>
+                            ✓ Terdaftar di Kementerian Hukum<br>
+                            ✓ Status Pajak Valid
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon">🏢</div>
+                        <h3>Lokasi Strategis</h3>
+                        <p>
+                            Jl. Cikoko Timur II No.28<br>
+                            Pancoran, Jakarta Selatan<br>
+                            DKI Jakarta 12770<br>
+                            Indonesia
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <div class="icon">💼</div>
+                        <h3>Struktur Organisasi</h3>
+                        <p>
+                            Bentuk Badan Usaha: CV (Perseroan Komanditer)<br>
+                            Dirjen Dijawab oleh Profesional Bersertifikat<br>
+                            Tim Manajemen Berpengalaman<br>
+                            Komisi Pengawas Aktif
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section white">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Layanan Kami</h2>
+                    <p>Solusi lengkap untuk semua kebutuhan teknologi dan bisnis digital Anda</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>🖥️ Infrastruktur IT</h3>
+                        <p>Penyediaan dan pemeliharaan infrastruktur teknologi informasi dengan standar enterprise</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>⚙️ Instalasi & Maintenance</h3>
+                        <p>Instalasi listrik, telekomunikasi, HVAC, dan layanan pemeliharaan rutin</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>💻 E-Commerce & Platform Digital</h3>
+                        <p>Pengembangan platform digital dan solusi perdagangan elektronik yang scalable</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>📊 Konsultasi Manajemen</h3>
+                        <p>Konsultasi strategis untuk transformasi digital dan optimisasi proses bisnis</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>🎬 Produksi Media & Konten</h3>
+                        <p>Layanan produksi film, video, animasi, dan konten multimedia berkualitas tinggi</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>📱 Pemasaran Digital</h3>
+                        <p>Strategi pemasaran digital, SEO, media sosial, dan kampanye online terintegrasi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section dark">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Bidang Usaha</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Legal & Tersertifikasi</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support & Service</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime Terjamin</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 2: PROFILE LENGKAP -->
+    <div id="profile" class="page">
+        <section class="section light" style="margin-top: 60px; padding-top: 3rem;">
+            <div class="container">
+                <button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+
+                <div class="profile-header">
+                    <img src="logo.png" alt="Logo" style="width: 80px; height: 80px; margin-bottom: 1rem; background: white; padding: 5px; border-radius: 50%;">
+                    <h1>CV SEMASA HIDUP</h1>
+                    <p>Solusi Teknologi Terpadu untuk Transformasi Digital Indonesia</p>
+                </div>
+
+                <!-- Profile Details -->
+                <div class="profile-detail">
+                    <div>
+                        <h3>📋 Identitas Perusahaan</h3>
+                        <div class="detail-item">
+                            <div class="detail-label">Nama Resmi</div>
+                            <div class="detail-value">CV SEMASA HIDUP</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Bentuk Badan Usaha</div>
+                            <div class="detail-value">Perseroan Komanditer (CV)</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">NIB (Nomor Induk Berusaha)</div>
+                            <div class="detail-value">2612250009794 <span class="verified-badge">Terverifikasi</span></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">NPWP</div>
+                            <div class="detail-value">1000000007532831</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Tanggal Terdaftar</div>
+                            <div class="detail-value">23 Desember 2025</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>📍 Lokasi & Kontak</h3>
+                        <div class="detail-item">
+                            <div class="detail-label">Alamat Kantor</div>
+                            <div class="detail-value">Jl. Cikoko Timur II No.28, RT.004/RW.007<br>Kel. Cikoko, Kec. Pancoran<br>Kota Adm. Jakarta Selatan, DKI Jakarta 12770</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Telepon</div>
+                            <div class="detail-value">089532559611</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Email</div>
+                            <div class="detail-value">cvsemasahidup@gmail.com</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Rekening Bank</div>
+                            <div class="detail-value">Mandiri: 1030012913121 (a.n. CV SEMASA HIDUP)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Structure -->
+                <div style="background: white; padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem;">
+                    <h2 style="color: var(--primary); margin-bottom: 2rem;">👥 Struktur Manajemen</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3>Husni Thamrin</h3>
+                            <p><strong>Posisi:</strong> Direktur Utama & Pesero Pengurus</p>
+                            <p><strong>Lahir:</strong> Jakarta, 16 Juli 1964</p>
+                            <p><strong>Status:</strong> Warga Negara Indonesia</p>
+                            <span class="verified-badge">Terverifikasi</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Agung Priyo Sembodo, S.I.Kom., M.I.Kom.</h3>
+                            <p><strong>Posisi:</strong> Direktur & Pesero Pengurus</p>
+                            <p><strong>Lahir:</strong> Jakarta, 01 Februari 1991</p>
+                            <p><strong>Status:</strong> Warga Negara Indonesia</p>
+                            <span class="verified-badge">Terverifikasi</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Tim Komisaris (Pesero Komanditer)</h3>
+                            <p>Muhammad Hasby Elniansyah | Irfan Anugrah Pratama | Ali Permana | Oktavianto Dermawan | Wahyu Rian Dwi Saputro</p>
+                            <span class="verified-badge">5 Orang Terverifikasi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Fields -->
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="color: var(--primary); margin-bottom: 2rem;">🎯 Bidang Usaha (15 KBLI)</h2>
+                    <div class="business-grid">
+                        <div class="business-item">
+                            <div class="business-item-code">63122</div>
+                            <div class="business-item-title">Portal Web & Platform Digital</div>
+                            <div class="business-item-desc">Penyelenggara perdagangan elektronik dengan tujuan komersial</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">33149</div>
+                            <div class="business-item-title">Reparasi Peralatan Listrik</div>
+                            <div class="business-item-desc">Layanan reparasi dan maintenance peralatan listrik</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">43224</div>
+                            <div class="business-item-title">Instalasi HVAC</div>
+                            <div class="business-item-desc">Instalasi pendingin dan ventilasi udara profesional</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">43211</div>
+                            <div class="business-item-title">Instalasi Listrik</div>
+                            <div class="business-item-desc">Instalasi sistem kelistrikan standar enterprise</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">43212</div>
+                            <div class="business-item-title">Instalasi Telekomunikasi</div>
+                            <div class="business-item-desc">Layanan instalasi infrastruktur telekomunikasi</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">46511</div>
+                            <div class="business-item-title">Perdagangan Komputer</div>
+                            <div class="business-item-desc">Penjualan dan distribusi perangkat komputer dan aksesori</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">46512</div>
+                            <div class="business-item-title">Perdagangan Piranti Lunak</div>
+                            <div class="business-item-desc">Penjualan dan lisensi software profesional</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">46694</div>
+                            <div class="business-item-title">Perdagangan Kertas & Karton</div>
+                            <div class="business-item-desc">Distribusi kertas dan produk karton berkualitas</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">59112</div>
+                            <div class="business-item-title">Produksi Film & Video</div>
+                            <div class="business-item-desc">Produksi konten multimedia dan animasi profesional</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">62090</div>
+                            <div class="business-item-title">Teknologi Informasi</div>
+                            <div class="business-item-desc">Layanan IT dan jasa komputer lainnya</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">70209</div>
+                            <div class="business-item-title">Konsultasi Manajemen</div>
+                            <div class="business-item-desc">Konsultasi strategis untuk bisnis dan transformasi digital</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">73100</div>
+                            <div class="business-item-title">Periklanan</div>
+                            <div class="business-item-desc">Layanan periklanan dan marketing digital terintegrasi</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">79111</div>
+                            <div class="business-item-title">Agen Perjalanan Wisata</div>
+                            <div class="business-item-desc">Penyelenggaraan paket wisata dan perjalanan bisnis</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">82302</div>
+                            <div class="business-item-title">Event Management</div>
+                            <div class="business-item-desc">Penyelenggaraan acara khusus dan event profesional</div>
+                        </div>
+                        <div class="business-item">
+                            <div class="business-item-code">95120</div>
+                            <div class="business-item-title">Reparasi Komunikasi</div>
+                            <div class="business-item-desc">Layanan reparasi peralatan komunikasi terpadu</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sertifikasi & Status -->
+                <div style="background: white; padding: 2.5rem; border-radius: 15px;">
+                    <h2 style="color: var(--primary); margin-bottom: 2rem;">✅ Status & Sertifikasi</h2>
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="icon">✓</div>
+                            <h3>Status Pajak</h3>
+                            <p>
+                                Status: <strong>VALID</strong><br>
+                                NPWP Terdaftar & Aktif<br>
+                                Status Non-PKP Terverifikasi<br>
+                                Dapat Melakukan Pembayaran Pajak
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <div class="icon">🏛️</div>
+                            <h3>Registrasi Pemerintah</h3>
+                            <p>
+                                Terdaftar di Kementerian Hukum<br>
+                                Nomor: AHU-0108583-AH.01.14<br>
+                                Tanggal: 19 Desember 2025<br>
+                                Status: Sah & Diakui
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <div class="icon">🌍</div>
+                            <h3>Izin Lingkungan</h3>
+                            <p>
+                                SPPL (Surat Pernyataan Pengelolaan Lingkungan)<br>
+                                Terbit: 26 Desember 2025<br>
+                                Komitmen Pengelolaan Lingkungan<br>
+                                Kepatuhan Standar Lingkungan
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 3: LEGALITAS & DOKUMENTASI -->
+    <div id="legality" class="page">
+        <section class="section light" style="margin-top: 60px; padding-top: 3rem;">
+            <div class="container">
+                <button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+
+                <div class="section-header">
+                    <h2>Legalitas & Dokumentasi Lengkap</h2>
+                    <p>Semua dokumen resmi dan sertifikasi CV SEMASA HIDUP telah diverifikasi dan terdaftar di instansi pemerintah</p>
+                </div>
+
+                <div class="legality-section">
+                    <div class="legality-badge">
+                        <span class="badge-icon">📄</span>
+                        <h3>NIB (Nomor Induk Berusaha)</h3>
+                        <div class="badge-content">
+                            Surat resmi pendirian badan usaha<br>
+                            <strong>2612250009794</strong><br>
+                            Terbit: 26 Desember 2025<br>
+                            Kementerian Investasi & BKPM
+                            <span class="status-badge">✓ Terverifikasi</span>
+                        </div>
+                    </div>
+
+                    <div class="legality-badge">
+                        <span class="badge-icon">💰</span>
+                        <h3>NPWP (Nomor Pokok Wajib Pajak)</h3>
+                        <div class="badge-content">
+                            Registrasi pajak resmi Indonesia<br>
+                            <strong>1000000007532831</strong><br>
+                            Kantor: KPP Pratama Jakarta Pancoran<br>
+                            Terdaftar: 23 Desember 2025
+                            <span class="status-badge">✓ Aktif & Valid</span>
+                        </div>
+                    </div>
+
+                    <div class="legality-badge">
+                        <span class="badge-icon">📋</span>
+                        <h3>Akta Pendirian Notaris</h3>
+                        <div class="badge-content">
+                            Akta Notaris Pendirian CV<br>
+                            <strong>Nomor -35-</strong><br>
+                            Tanggal: 19 Desember 2025<br>
+                            Notaris Azka Auliannisa, S.H., M.Kn.
+                            <span class="status-badge">✓ Sah</span>
+                        </div>
+                    </div>
+
+                    <div class="legality-badge">
+                        <span class="badge-icon">🏛️</span>
+                        <h3>Registrasi Kementerian Hukum</h3>
+                        <div class="badge-content">
+                            Surat Keterangan Terdaftar<br>
+                            <strong>AHU-0108583-AH.01.14</strong><br>
+                            Tanggal: 19 Desember 2025<br>
+                            Dirjen Administrasi Hukum Umum
+                            <span class="status-badge">✓ Terdaftar</span>
+                        </div>
+                    </div>
+
+                    <div class="legality-badge">
+                        <span class="badge-icon">🌍</span>
+                        <h3>SPPL (Izin Lingkungan)</h3>
+                        <div class="badge-content">
+                            Surat Pernyataan Pengelolaan Lingkungan<br>
+                            <strong>Terbit: 26 Desember 2025</strong><br>
+                            Komitmen Standar Lingkungan<br>
+                            Kepatuhan Regulasi Lingkungan
+                            <span class="status-badge">✓ Terdaftar</span>
+                        </div>
+                    </div>
+
+                    <div class="legality-badge">
+                        <span class="badge-icon">📊</span>
+                        <h3>Status Wajib Pajak (KSWP)</h3>
+                        <div class="badge-content">
+                            Surat Keterangan Status Pajak<br>
+                            <strong>KET-00926/KSWP-CT</strong><br>
+                            Tanggal: 30 Desember 2025<br>
+                            Status: Valid & Terdaftar
+                            <span class="status-badge">✓ Valid</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Documents -->
+                <h2 style="color: var(--primary); margin: 4rem 0 2rem;">📚 Dokumentasi Lengkap</h2>
+                
+                <div class="document-grid">
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">🎖️</div>
+                            <h3>Perizinan Berusaha</h3>
+                            <p>Risiko Berbasis</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>Izin Operasional Lengkap</li>
+                                <li>15 Kode KBLI Terverifikasi</li>
+                                <li>Standar Keselamatan Kerja</li>
+                                <li>Komitmen Lingkungan</li>
+                                <li>Liability Coverage Complete</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">👥</div>
+                            <h3>Struktur Organisasi</h3>
+                            <p>Manajemen Profesional</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>2 Direktur Terverifikasi</li>
+                                <li>5 Komisaris Berkualitas</li>
+                                <li>Akta Notaris Resmi</li>
+                                <li>Susunan Organisasi Jelas</li>
+                                <li>Jalur Pelaporan Terstruktur</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">💼</div>
+                            <h3>Status Pajak & Keuangan</h3>
+                            <p>Transparansi Finansial</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>NPWP Aktif & Terdaftar</li>
+                                <li>Non-PKP Terverifikasi</li>
+                                <li>Laporan Keuangan Rutin</li>
+                                <li>Rekening Bank Resmi</li>
+                                <li>Audit Trail Lengkap</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">🏢</div>
+                            <h3>Lokasi & Fasilitas</h3>
+                            <p>Kantor Permanent</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>Lokasi di Jakarta Selatan</li>
+                                <li>Alamat Permanen Terdaftar</li>
+                                <li>Fasilitas Modern</li>
+                                <li>Telekomunikasi Lengkap</li>
+                                <li>Aksesibilitas Strategis</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">🌍</div>
+                            <h3>Komitmen Lingkungan</h3>
+                            <p>SPPL Terverifikasi</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>SPPL Terbit Resmi</li>
+                                <li>Standar Lingkungan</li>
+                                <li>Pengelolaan Limbah</li>
+                                <li>Emisi Terkontrol</li>
+                                <li>Pengawasan Berkala</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+
+                    <div class="document-card">
+                        <div class="document-header">
+                            <div class="document-icon">✅</div>
+                            <h3>Sertifikasi & Kompetensi</h3>
+                            <p>Profesional Bersertifikat</p>
+                        </div>
+                        <div class="document-body">
+                            <ul>
+                                <li>Tim Berpengalaman</li>
+                                <li>Sertifikasi Internasional</li>
+                                <li>Training Berkelanjutan</li>
+                                <li>Standar Kompetensi Tinggi</li>
+                                <li>Quality Assurance Program</li>
+                            </ul>
+                            <button class="document-btn">Lihat Detail →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline of Registrations -->
+                <h2 style="color: var(--primary); margin: 4rem 0 2rem;">📅 Timeline Registrasi & Perizinan</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>19 Desember 2025</h3>
+                        <p><strong>Akta Pendirian Notaris</strong></p>
+                        <p>Pengesahan pendirian CV SEMASA HIDUP oleh Notaris Azka Auliannisa, S.H., M.Kn. Akta Nomor -35-</p>
+                        <span class="verified-badge">✓ Resmi</span>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>19 Desember 2025</h3>
+                        <p><strong>Registrasi Kementerian Hukum</strong></p>
+                        <p>Terdaftar resmi di Dirjen Administrasi Hukum Umum dengan nomor AHU-0108583-AH.01.14</p>
+                        <span class="verified-badge">✓ Tercatat</span>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>23 Desember 2025</h3>
+                        <p><strong>NPWP & Pendaftaran Pajak</strong></p>
+                        <p>Pendaftaran sebagai Wajib Pajak di KPP Pratama Jakarta Pancoran. NPWP: 1000000007532831</p>
+                        <span class="verified-badge">✓ Aktif</span>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>26 Desember 2025</h3>
+                        <p><strong>NIB & Perizinan Berusaha</strong></p>
+                        <p>Penerbitan NIB resmi dan izin operasional untuk 15 bidang usaha berdasarkan sistem OSS</p>
+                        <span class="verified-badge">✓ Terbaru</span>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>26 Desember 2025</h3>
+                        <p><strong>SPPL (Izin Lingkungan)</strong></p>
+                        <p>Pernyataan kesanggupan pengelolaan dan pemantauan lingkungan hidup terdaftar resmi</p>
+                        <span class="verified-badge">✓ Sah</span>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>30 Desember 2025</h3>
+                        <p><strong>Status Wajib Pajak Valid</strong></p>
+                        <p>Surat Keterangan Status Wajib Pajak (KSWP) diterbitkan dengan status VALID</p>
+                        <span class="verified-badge">✓ Terkini</span>
+                    </div>
+                </div>
+
+                <!-- Key Points -->
+                <div style="background: linear-gradient(135deg, #f0f8ff, #f0ffe6); padding: 2.5rem; border-radius: 15px; border-left: 5px solid var(--success); margin-top: 3rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem;">🎯 Ringkasan Kelengkapan Dokumentasi</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div>
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">✓ Perizinan & Registrasi</p>
+                            <p style="color: #666; font-size: 0.95rem;">Semua dokumen registrasi lengkap dan terverifikasi oleh otoritas pemerintah</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">✓ Kepatuhan Pajak</p>
+                            <p style="color: #666; font-size: 0.95rem;">Status pajak valid, NPWP aktif, dan laporan keuangan teratur</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">✓ Standar Lingkungan</p>
+                            <p style="color: #666; font-size: 0.95rem;">Komitmen penuh terhadap pengelolaan dan pemantauan lingkungan hidup</p>
+                        </div>
+                        <div>
+                            <p style="color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">✓ Manajemen Profesional</p>
+                            <p style="color: #666; font-size: 0.95rem;">Struktur organisasi jelas dengan pemimpin berpengalaman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PAGE 4: CONTACT -->
+    <div id="contact" class="page">
+        <section class="section light" style="margin-top: 60px; padding: 6rem 2rem;">
+            <div class="container">
+                <button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+
+                <div class="section-header" style="margin-bottom: 4rem;">
+                    <h2>Hubungi Kami</h2>
+                    <p>Siap membantu Anda mewujudkan visi digital Anda. Hubungi kami untuk konsultasi gratis.</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Mari Kita Bekerja Sama</h2>
+                        <p style="margin-bottom: 2rem; color: #666;">
+                            Tim kami siap memberikan solusi terbaik untuk kebutuhan teknologi dan transformasi digital bisnis Anda. Hubungi kami melalui salah satu saluran komunikasi di bawah ini.
+                        </p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📍</div>
+                            <div>
+                                <h3>Alamat Kantor</h3>
+                                <p>Jl. Cikoko Timur II No.28<br>Pancoran, Jakarta Selatan<br>DKI Jakarta 12770, Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📞</div>
+                            <div>
+                                <h3>Telepon</h3>
+                                <p>089532559611</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">✉️</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>cvsemasahidup@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">🏦</div>
+                            <div>
+                                <h3>Rekening Bank</h3>
+                                <p>Mandiri: 1030012913121<br>a.n. CV SEMASA HIDUP</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📋</div>
+                            <div>
+                                <h3>Data Perusahaan</h3>
+                                <p>NIB: 2612250009794<br>NPWP: 1000000007532831</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Nomor Telepon" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Nama Perusahaan" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Pesan Anda (Jelaskan kebutuhan Anda)" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Kirim Pesan →</button>
+                    </form>
+                </div>
+
+                <div style="background: linear-gradient(135deg, rgba(26, 77, 122, 0.05), rgba(0, 180, 216, 0.05)); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--secondary); margin-top: 3rem;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">💡 Jam Operasional</h3>
+                    <p style="color: #666;">
+                        <strong>Senin - Jumat:</strong> 08:00 - 17:00 WIB<br>
+                        <strong>Sabtu - Minggu:</strong> Tersedia untuk kebutuhan urgent<br>
+                        <strong>Support 24/7:</strong> Untuk klien enterprise
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+                <div class="footer-section">
+                    <h4>CV SEMASA HIDUP</h4>
+                    <p>Solusi teknologi terpadu untuk transformasi digital bisnis Anda dengan standar internasional</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan Utama</h4>
+                    <a onclick="showPage('home')">Infrastruktur IT</a>
+                    <a onclick="showPage('home')">E-Commerce</a>
+                    <a onclick="showPage('home')">Konsultasi</a>
+                    <a onclick="showPage('home')">Media Digital</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Cepat</h4>
+                    <p>089532559611</p>
+                    <p>cvsemasahidup@gmail.com</p>
+                    <a onclick="showPage('contact')">Hubungi Kami</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legalitas</h4>
+                    <p>NIB: 2612250009794</p>
+                    <p>NPWP: 1000000007532831</p>
+                    <a onclick="showPage('legality')">Lihat Dokumentasi</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CV SEMASA HIDUP. Semua hak dilindungi. | Dikembangkan dengan ❤️ untuk kesuksesan digital Anda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah kami terima. Tim kami akan segera menghubungi Anda dalam waktu 24 jam.');
+            e.target.reset();
+        }
+
+        // Tab Navigation (if needed)
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
